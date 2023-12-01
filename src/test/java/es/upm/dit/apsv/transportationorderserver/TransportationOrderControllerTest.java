@@ -34,10 +34,12 @@ public class TransportationOrderControllerTest {
     private TransportationOrderRepository repository;
     @Autowired
     private MockMvc mockMvc;
+
     @Test
     public void testGetOrders() throws Exception {
         //call GET "/transportationorders"  application/json
         when(repository.findAll()).thenReturn(getAllTestOrders());
+        
         RequestBuilder request = MockMvcRequestBuilders
                 .get("/transportationorders")
                 .accept(MediaType.APPLICATION_JSON);
@@ -46,6 +48,7 @@ public class TransportationOrderControllerTest {
                 .andExpect(jsonPath("$", hasSize(20)))
                 .andReturn();
     }
+
     private List<TransportationOrder> getAllTestOrders(){
         ObjectMapper objectMapper = new ObjectMapper();
         ArrayList<TransportationOrder> orders =
