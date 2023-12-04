@@ -34,10 +34,7 @@ jobs:
         registry: ghcr.io
         username: "lars.breum.lh@gmail.com"
         password: ${{ secrets.PAT }}
-  buildAndPush:
-    needs: Github
-    runs-on: ubuntu-latest
-    name: Build and push
+    - name: Build and push
       uses: docker/build-push-action@v3
       with:
         context: .
