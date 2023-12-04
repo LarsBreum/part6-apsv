@@ -28,7 +28,7 @@ jobs:
     - name: Run all defined tests and generate war with Maven
       run: mvn -B verify --file pom.xml
     - run: ls ${GITHUB_WORKSPACE}/target/*.jar
-  Github:
+  github:
     needs: verify
     runs-on: ubuntu-latest
     - name: Login to Gihub Actions
@@ -37,7 +37,7 @@ jobs:
         registry: ghcr.io
         username: "lars.breum.lh@gmail.com"
         password: ${{ secrets.PAT }}
-  BuildAndPush:
+  buildAndPush:
     needs: Github
     runs-on: ubuntu-latest
     name: Build and push
