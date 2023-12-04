@@ -70,4 +70,4 @@ jobs:
       run: 'kubectl create secret docker-registry github-registry --docker-server="ghcr.io" --docker-username="larsbreum" --docker-password="${{ secrets.PAT }}" --docker-email="lars.breum.lh@gmail.com" -o yaml --dry-run=client | kubectl apply -f -'
     - run: 'kubectl apply -f deployment.yaml'
     - run: 'kubectl get deployments'
-    - run: 'kubectl get pods'
+    - run: 'kubectl get po'
