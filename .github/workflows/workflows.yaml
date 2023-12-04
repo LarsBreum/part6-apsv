@@ -28,6 +28,8 @@ jobs:
           java-version: 14
       - name: Run all defined tests and generate war with Maven
         run: mvn -B verify --file pom.xml
+      - name: list
+        run: ls -lah
   buildAndPushImage:
     needs: verify
     runs-on: ubuntu-latest
