@@ -26,6 +26,9 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: 14
+      - name: Run all defined tests and generate war with Maven
+        run: mvn -B verify --file pom.xml
+        run: ls
   package:
     needs: verify
     runs-on: ubuntu-latest
