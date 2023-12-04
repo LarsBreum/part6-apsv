@@ -30,7 +30,6 @@ jobs:
     needs: verify
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-java@v3
       - name: package
         uses: docker/login-action@v2
         with:
