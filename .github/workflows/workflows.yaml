@@ -28,16 +28,12 @@ jobs:
           java-version: 14
       - name: Run all defined tests and generate war with Maven
         run: mvn -B verify --file pom.xml
-      - name: list
-        run: ls
-  package:
+  buildAndPushImage:
     needs: verify
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: list
-        run: ls
-      - name: package
+      - name: login to registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -48,4 +44,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/larsbreum/ts:latest
+          tags: ghcr.io/LarsBreum/ts:latest
