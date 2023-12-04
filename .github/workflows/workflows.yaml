@@ -39,6 +39,7 @@ jobs:
         password: ${{ secrets.PAT }}
   BuildAndPush:
     needs: Github
+    runs-on: ubuntu-latest
     name: Build and push
       uses: docker/build-push-action@v3
       with:
