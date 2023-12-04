@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traceserver-srv
+spec:
+  selector:
+    app: traceserver
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traceserver-dpl
+  labels:
+    app: traceserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traceserver
+  template:
+    metadata:
+      labels:
+        app: traceserver
+    spec:
+      containers:
+      - name: traceserver
+        image: ghcr.io/larsbreum/ts
+        ports:
+        - containerPort: 8080
+        env:
+        - name: spring.cloud.stream.kafka.binder.brokers
+          value: "${KAFKA_SERVICE_SERVICE_HOST}:9092"
+      imagePullSecrets:
+      - name: github-registry
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traceproducer-srv
+spec:
+  selector:
+    app: traceproducer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traceproducer-dpl
+  labels:
+    app: traceproducer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traceproducer
+  template:
+    metadata:
+      labels:
+        app: traceproducer
+    spec:
+      containers:
+      - name: traceproducer
+        image: ghcr.io/larsbreum/tp
+        ports:
+        - containerPort: 8080
+        env:
+        - name: spring.cloud.stream.kafka.binder.brokers
+          value: "${KAFKA_SERVICE_SERVICE_HOST}:9092"
+      imagePullSecrets:
+       - name: github-registry

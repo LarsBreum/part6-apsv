@@ -35,3 +35,4 @@ spec:
           env:
             - name: ADVERTISED_HOST
               value: kafka-service
+
