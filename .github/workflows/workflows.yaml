@@ -36,7 +36,7 @@ jobs:
           registry: ghcr.io
           username: "lars.breum.lh@gmail.com"
           password: ${{ secrets.PAT }}
-  build&Push:
+  buildAndPush:
     needs: package
     runs-on: ubuntu-latest
     steps:
