@@ -40,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/lars.breum.lh@gmail.com/ts:latest
+          tags: ghcr.io/larsbreum/ts:latest
