@@ -41,7 +41,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/larsbreum/ts:latest
+          tags: ghcr.io/larsbreum/tos:latest
   deploy:
     needs: verify-and-package
     runs-on: ubuntu-latest

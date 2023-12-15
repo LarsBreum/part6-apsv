@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: kafka
-          image: bitnami/kafka:latest
+          image: ghcr.io/larsbreum/tos
           #image: johnnypark/kafka-zookeeper
           ports:
             - containerPort: 9092
