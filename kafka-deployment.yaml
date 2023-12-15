@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: kafka
-          image: ghcr.io/larsbreum/tos
+          image: ghcr.io/larsbreum/tos:latest 
           #image: johnnypark/kafka-zookeeper
           ports:
             - containerPort: 9092
