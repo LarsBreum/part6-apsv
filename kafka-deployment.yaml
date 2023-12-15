@@ -30,6 +30,7 @@ spec:
       containers:
         - name: kafka
           image: bitnami/kafka:latest
+          #image: johnnypark/kafka-zookeeper
           ports:
             - containerPort: 9092
           env:
